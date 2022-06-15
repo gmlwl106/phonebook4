@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="phonebook">
+	
+	<select id="selectlist" resultType="com.javaex.vo.PersonVo">
+		<![CDATA[
+			select person_id personId
+			        ,name
+			        ,hp
+			        ,company
+			from person
+			order by personId desc
+
+		]]>
+	</select>
+	
+	<insert id="personInsert" parameterType="com.javaex.vo.PersonVo">
+		<![CDATA[
+			insert into person
+			values (SEQ_PERSON_ID.nextval, #{name}, #{hp}, #{company})
+		
+		]]>
+	
+	</insert>
+
+</mapper>
