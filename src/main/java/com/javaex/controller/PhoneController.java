@@ -35,7 +35,6 @@ public class PhoneController {
 		// Service를 통해서 personList(주소)을 가져온다
 		// PhoneService phoneService = new PhoneService() X;
 		List<PersonVo> personList = phoneService.getPersonList();
-		System.out.println(personList);
 
 		// ds 데이터보내기 -->request attribute에 넣는다
 		model.addAttribute("personList", personList);

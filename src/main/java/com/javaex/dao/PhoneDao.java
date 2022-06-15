@@ -60,22 +60,45 @@ public class PhoneDao {
 		/*System.out.println("PhoneDao->getPersonList()");
 		List<PersonVo> personList = sqlSession.selectList("phonebook.selectlist");
 		System.out.println(personList);*/
-		return sqlSession.selectList("phonebook.selectlist");
+		return sqlSession.selectList("phonebook.selectList");
 	}
 	
 	// 사람 추가
 	public int personInsert(PersonVo personVo) {
-		/*System.out.println("PhoneDao->personInser()");
+		/*System.out.println("PhoneDao->personInsert()");
 		int count = sqlSession.insert("phonebook.personInsert", personVo);*/
 		
 		return sqlSession.insert("phonebook.personInsert", personVo);
 	}
 
+	//사람 삭제
+	public int personDelete(int no) {
+		/*System.out.println("PhoneDao->personDelete()");
+		int count = sqlSession.delete("phonebook.personDelete", no);*/
+		
+		return sqlSession.delete("phonebook.personDelete", no);
+	}
+	
+	//사람 찾기
+	public PersonVo getPerson(int no) {
+		/*System.out.println("PhoneDao->getPerson()");
+		PersonVo personVo = sqlSession.selectOne("phonebook.selectPerson", no);*/
+		return sqlSession.selectOne("phonebook.selectPerson", no);		
+	}
+	
+	//사람 수정
+	public int personUpdate(PersonVo personVo) {
+		System.out.println("PhoneDao->personUpdate()");
+		int count = sqlSession.update("phonebook.personUpdate", personVo);
+		return count;
+	}
+	
+	
+	
 	// 사람 리스트(검색안할때)
 	public List<PersonVo> getPersonList2() {
 		return getPersonList("");
 	}
-	
 	
 	
 	// 사람 추가
@@ -171,7 +194,7 @@ public class PhoneDao {
 
 	
 	// 사람 삭제
-		public int personDelete(int personId) {
+		public int personDelete2(int personId) {
 			int count = 0;
 			getConnection();
 
@@ -199,7 +222,7 @@ public class PhoneDao {
 
 	
 	// 1명 정보 가져오기
-	public PersonVo getPerson(int personId) {
+	public PersonVo getPerson2(int personId) {
 		PersonVo personVo = null;
 
 		this.getConnection();
@@ -242,33 +265,9 @@ public class PhoneDao {
 
 		return personVo;
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	// 사람 수정
-	public int personUpdate(PersonVo personVo) {
+	public int personUpdate2(PersonVo personVo) {
 		int count = 0;
 		getConnection();
 

@@ -3,7 +3,7 @@
 
 <mapper namespace="phonebook">
 	
-	<select id="selectlist" resultType="com.javaex.vo.PersonVo">
+	<select id="selectList" resultType="com.javaex.vo.PersonVo">
 		<![CDATA[
 			select person_id personId
 			        ,name
@@ -23,5 +23,33 @@
 		]]>
 	
 	</insert>
+	
+	<delete id="personDelete" parameterType="int">
+		<![CDATA[
+			delete person
+			where person_id = #{no}
+		]]>
+	</delete>
+	
+	<select id="selectPerson" parameterType="int" resultType="com.javaex.vo.PersonVo">
+		<![CDATA[
+			select person_id personId
+			        ,name
+			        ,hp
+			        ,company
+			from person
+			where person_id = #{personId}
+		]]>		
+	</select>
+	
+	<update id="personUpdate" parameterType="com.javaex.vo.PersonVo">
+		<![CDATA[
+			update person
+			set name = #{name}
+			    ,hp = #{hp}
+			    ,company = #{company}
+			where person_id = #{personId}
+		]]>
+	</update>
 
 </mapper>
