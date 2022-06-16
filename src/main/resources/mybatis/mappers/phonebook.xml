@@ -9,7 +9,7 @@
 		<result column="company" property="company"/>
 	</resultMap>
 
-	<select id="selectList" resultMap="resultMapPersonVo">
+	<select id="selectList" resultType="PersonVo" resultMap="resultMapPersonVo">
 		<![CDATA[
 			select person_id
 			        ,name
@@ -37,7 +37,7 @@
 		]]>
 	</delete>
 	
-	<select id="selectPerson" parameterType="int" resultMap="resultMapPersonVo">
+	<select id="selectPerson" parameterType="int" resultType="PersonVo" resultMap="resultMapPersonVo">
 		<![CDATA[
 			select person_id
 			        ,name
