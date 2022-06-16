@@ -19,41 +19,9 @@ public class PhoneDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	// 0. import java.sql.*;
-	private Connection conn = null;
-	private PreparedStatement pstmt = null;
-	private ResultSet rs = null;
-
-	/*
-	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String id = "phonedb";
-	private String pw = "phonedb";
-	*/
+	private Connection conn = sqlSession.getConnection();
 	
-	private void getConnection() {
-		// 2. Connection 얻어오기
-		//conn = DriverManager.getConnection(url, id, pw);
-		// System.out.println("접속성공");
-		conn = sqlSession.getConnection();
-	}
-
-	private void close() {
-		// 5. 자원정리
-		try {
-			if (rs != null) {
-				rs.close();
-			}
-			if (pstmt != null) {
-				pstmt.close();
-			}
-			if (conn != null) {
-				conn.close();
-			}
-		} catch (SQLException e) {
-			System.out.println("error:" + e);
-		}
-	}
+	
 	
 	//사람 검색
 	public List<PersonVo> getPersonList() {
@@ -91,6 +59,49 @@ public class PhoneDao {
 		System.out.println("PhoneDao->personUpdate()");
 		int count = sqlSession.update("phonebook.personUpdate", personVo);
 		return count;
+	}
+	
+	
+	
+	
+	
+	
+	////////////////////////////////////////////////////////////////////////////////////////
+	/*
+	// 0. import java.sql.*;
+	private Connection conn = null;
+	private PreparedStatement pstmt = null;
+	private ResultSet rs = null;
+
+	
+	private String driver = "oracle.jdbc.driver.OracleDriver";
+	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	private String id = "phonedb";
+	private String pw = "phonedb";
+	
+	
+	private void getConnection() {
+		// 2. Connection 얻어오기
+		//conn = DriverManager.getConnection(url, id, pw);
+		// System.out.println("접속성공");
+		
+	}
+
+	private void close() {
+		// 5. 자원정리
+		try {
+			if (rs != null) {
+				rs.close();
+			}
+			if (pstmt != null) {
+				pstmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		}
 	}
 	
 	
@@ -300,6 +311,7 @@ public class PhoneDao {
 		close();
 		return count;
 	}
+	*/
 
 	
 
