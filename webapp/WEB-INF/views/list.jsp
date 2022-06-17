@@ -31,6 +31,7 @@
 		</tr>
 		<tr>
 			<td><a href="./updateForm?no=${personVo.personId}">[수정폼]</a></td>
+			<td><a href="./updateForm2?no=${personVo.personId}">[수정폼2]</a></td>
 			<td><a href="./delete?no=${personVo.personId}">[삭제]</a></td>
 		</tr>
 	</table>

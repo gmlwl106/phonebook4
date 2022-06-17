@@ -1,6 +1,8 @@
 package com.javaex.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +43,21 @@ public class PhoneService {
 		return count;
 	}
 	
+	//전화번호 등록(map을 사용하는 가상의 상황)
+	public int personInsert3() {
+		System.out.println("PhoneDao->personInsert3()");
+		
+		//map을 만들어서 사용한다 *1회성
+		Map<String, String> pMap = new HashMap<String, String>();
+		pMap.put("name", "박깜이");
+		pMap.put("hp", "010-2222-3333");
+		pMap.put("company", "02-2222-3333");
+		
+		int count = phoneDao.personInsert3(pMap);
+		
+		return count;
+	}
+	
 	
 	//전화번호 삭제
 	public int personDelete(int no) {
@@ -58,6 +75,15 @@ public class PhoneService {
 		PersonVo personVo = phoneDao.getPerson(no);
 		
 		return personVo;
+	}
+	
+	//전화번호 수정폼(map 방식)
+	public Map<String, Object> getPerson2(int no) {
+		System.out.println("PhoneService->getPerson2()");
+		
+		Map<String, Object> pMap = phoneDao.getPerson2(no);
+		
+		return pMap;
 	}
 	
 	//전화번호 수정

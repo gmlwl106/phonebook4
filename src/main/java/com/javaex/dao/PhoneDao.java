@@ -1,6 +1,8 @@
 package com.javaex.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,14 @@ public class PhoneDao {
 		
 		return sqlSession.insert("phonebook.personInsert", personVo);
 	}
+	
+	// 사람 추가(map을 사용하는 가상의 상황)
+	public int personInsert3(Map<String, String> pMap) {
+		/*System.out.println("PhoneDao->personInsert()");
+		int count = sqlSession.insert("phonebook.personInsert", personVo);*/
+		
+		return sqlSession.insert("phonebook.personInsert2", pMap);
+	}
 
 	//사람 삭제
 	public int personDelete(int no) {
@@ -44,6 +54,17 @@ public class PhoneDao {
 		/*System.out.println("PhoneDao->getPerson()");
 		PersonVo personVo = sqlSession.selectOne("phonebook.selectPerson", no);*/
 		return sqlSession.selectOne("phonebook.selectPerson", no);		
+	}
+	
+	//사람 찾기 (map을 사용하는 가상의 상황)
+	public Map<String, Object> getPerson2(int no) {
+		System.out.println("PhoneDao->getPerson2()");
+		Map<String, Object> pMap = sqlSession.selectOne("phonebook.getPerson2", no);
+		System.out.println(pMap);
+		System.out.println(pMap.get("NAME"));
+		
+		return pMap;
+		
 	}
 	
 	//사람 수정

@@ -21,7 +21,16 @@
 		]]>
 	</select>
 	
-	<insert id="personInsert" parameterType="com.javaex.vo.PersonVo">
+	<insert id="personInsert" parameterType="PersonVo">
+		<![CDATA[
+			insert into person
+			values (SEQ_PERSON_ID.nextval, #{name}, #{hp}, #{company})
+		
+		]]>
+	
+	</insert>
+	
+	<insert id="personInsert2" parameterType="map">
 		<![CDATA[
 			insert into person
 			values (SEQ_PERSON_ID.nextval, #{name}, #{hp}, #{company})
@@ -48,7 +57,18 @@
 		]]>		
 	</select>
 	
-	<update id="personUpdate" parameterType="com.javaex.vo.PersonVo">
+	<select id="getPerson2" parameterType="int" resultType="map">
+		<![CDATA[
+			select person_id personId
+			        ,name
+			        ,hp
+			        ,company
+			from person
+			where person_id = #{no}
+		]]>		
+	</select>
+	
+	<update id="personUpdate" parameterType="PersonVo">
 		<![CDATA[
 			update person
 			set name = #{name}
